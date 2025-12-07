@@ -28,14 +28,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDtoResult get (@PathVariable Integer id) {
+    public UserDtoResult get(@PathVariable Integer id) {
         if (id <= 0) throw new NotValidIdException();
         Optional<UserDtoResult> optionalResult = userService.get(id);
         return optionalResult.stream().findAny().orElseThrow();
     }
 
     @DeleteMapping("/{id}")
-    public UserDtoResult delete (@PathVariable Integer id) {
+    public UserDtoResult delete(@PathVariable Integer id) {
         if (id <= 0) throw new NotValidIdException();
         Optional<UserDtoResult> optionalResult = userService.delete(id);
         return optionalResult.stream().findAny().orElseThrow();
@@ -43,11 +43,10 @@ public class UserController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public UserDtoResult create (@RequestBody @Validated UserDtoCreateAndUpdate userCreateDto,
-                                 BindingResult errors) {
+    public UserDtoResult create(@RequestBody @Validated UserDtoCreateAndUpdate userCreateDto,
+                                BindingResult errors) {
         if (errors.hasErrors()) {
             String message = messageFromErrors(errors);
-            System.out.println("!!!!!!!!!!!!!-------------" + message);
             throw new NotValidArgumentException(message);
         }
 
@@ -62,19 +61,17 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public UserDtoResult update (@RequestBody @Validated UserDtoCreateAndUpdate userCreateDto,
-                                 BindingResult errors,
-                                 @PathVariable Integer id) {
+    public UserDtoResult update(@PathVariable Integer id,
+                                @RequestBody @Validated UserDtoCreateAndUpdate userCreateDto,
+                                BindingResult errors) {
         if (id <= 0) throw new NotValidIdException();
         if (errors.hasErrors()) {
             String message = messageFromErrors(errors);
-            System.out.println("!!!!!!!!!!!!!-------------" + message);
             throw new NotValidArgumentException(message);
         }
         Optional<UserDtoResult> optionalResult = userService.update(userCreateDto, id);
         return optionalResult.stream().findAny().orElseThrow();
     }
-
 
 
 }

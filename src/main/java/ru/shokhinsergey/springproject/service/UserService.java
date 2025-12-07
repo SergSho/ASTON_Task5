@@ -14,7 +14,7 @@ import java.util.Optional;
 
 
 @Service
-@Transactional()
+@Transactional
 public class UserService {
 
     private final UserMapper userMapper;
