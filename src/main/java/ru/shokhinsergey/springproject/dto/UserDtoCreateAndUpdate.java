@@ -1,21 +1,19 @@
 package ru.shokhinsergey.springproject.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 
 import java.util.Objects;
 
 public class UserDtoCreateAndUpdate {
 
 
+    @NotBlank (message = "Entered data is empty. Try again")
     @Pattern(regexp = "^[A-Z][a-z]{1,24}$",
             message = "First letter of the parameter \"name\" must be uppercase," +
                     "followed - lowercase. Length must be less then 25 letters")
     private String name;
 
-
+    @NotBlank (message = "Entered data is empty. Try again")
     @Email (message = "Entered data doesn't match the format of parameter \"email\"")
     private String email;
 

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.MediaType;
@@ -39,10 +40,14 @@ public class UserControllerTest {
     private String requestNotValidDataFromJson;
 
 
-    private final static String RESPONSE_NOT_FOUND = "User with specified \"id\" is not found";
-    private final static String RESPONSE_NOT_UNIQUE = "Specified \"email\" has already been registered";
-    private final static String RESPONSE_BAD_ARGUMENT = "Entered data doesn't match the format of parameter \"email\"";
-    private final static String RESPONSE_BAD_ID = "Entered \"id\" is not valid";
+    @Value("${springproject.response.exception.not-found}")
+    private String RESPONSE_NOT_FOUND;
+    @Value("${springproject.response.exception.not-unique}")
+    private String RESPONSE_NOT_UNIQUE;
+    @Value("${springproject.response.exception.bad-argument}")
+    private String RESPONSE_BAD_ARGUMENT;
+    @Value("${springproject.response.exception.bad-id}")
+    private String RESPONSE_BAD_ID;
 
     @MockitoBean
     private UserService mockService;
