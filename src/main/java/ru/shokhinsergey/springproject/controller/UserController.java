@@ -1,16 +1,14 @@
 package ru.shokhinsergey.springproject.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
 import org.springframework.web.client.RestTemplate;
+
 import ru.shokhinsergey.message.Message;
 import ru.shokhinsergey.springproject.dto.UserDtoCreateAndUpdate;
 import ru.shokhinsergey.springproject.dto.UserDtoResult;
@@ -18,7 +16,6 @@ import ru.shokhinsergey.springproject.exceptionhandler.exception.NotValidArgumen
 import ru.shokhinsergey.springproject.exceptionhandler.exception.NotValidIdException;
 import ru.shokhinsergey.springproject.service.UserService;
 
-import java.net.URI;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -77,10 +74,9 @@ public class UserController {
         return userService.create(userCreateDto);
     }
 
-
     @PostMapping("/message")
     public UserDtoResult createWithManualMessageSending(@RequestBody @Validated UserDtoCreateAndUpdate userCreateDto,
-                                                                  BindingResult errors) {
+                                                        BindingResult errors) {
         if (errors.hasErrors()) {
             String message = messageFromErrors(errors);
             throw new NotValidArgumentException(message);

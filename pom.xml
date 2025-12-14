@@ -32,9 +32,9 @@
     <dependencies>
 
         <dependency>
-        <groupId>ru.shokhinsergey</groupId>
-        <artifactId>kafkamessage</artifactId>
-        <version>1.0-SNAPSHOT</version>
+            <groupId>ru.shokhinsergey</groupId>
+            <artifactId>kafkamessage</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
