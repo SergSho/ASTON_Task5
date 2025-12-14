@@ -7,13 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SpringProject" />
+        <module name="Message" />
         <module name="KafkaConsumer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="KafkaConsumer" target="17" />
-      <module name="SpringProject" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

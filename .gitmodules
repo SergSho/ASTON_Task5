@@ -1,0 +1,6 @@
+[submodule "ASTON_Task5_Consumer"]
+	path = ASTON_Task5_Consumer
+	url = https://github.com/SergSho/ASTON_Task5_Consumer.git
+[submodule "ASTON_Task4"]
+	path = ASTON_Task4
+	url = https://github.com/SergSho/ASTON_Task4.git
