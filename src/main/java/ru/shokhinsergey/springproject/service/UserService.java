@@ -8,9 +8,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import ru.shokhinsergey.message.Message;
 import ru.shokhinsergey.springproject.dto.UserDtoCreateAndUpdate;
 import ru.shokhinsergey.springproject.dto.UserDtoResult;
-import ru.shokhinsergey.springproject.kafka.event.UserEvent;
 import ru.shokhinsergey.springproject.mapper.UserDtoResultMapper;
 import ru.shokhinsergey.springproject.mapper.UserMapper;
 import ru.shokhinsergey.springproject.model.User;
@@ -18,7 +19,7 @@ import ru.shokhinsergey.springproject.repository.UserRepository;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+
 
 
 @Service
@@ -28,16 +29,16 @@ public class UserService {
     @Value("${springproject.kafka.topic}")
     private String topic;
 
-    private static Logger log = LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
-    private final KafkaTemplate<Integer, UserEvent> kafkaTemplate;
+    private final KafkaTemplate<Integer, Message> kafkaTemplate;
 
     private final UserMapper userMapper;
     private final UserDtoResultMapper userDtoMapper;
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(KafkaTemplate<Integer, UserEvent> kafkaTemplate, UserMapper userMapper, UserDtoResultMapper userDtoMapper, UserRepository userRepository) {
+    public UserService(KafkaTemplate<Integer,Message> kafkaTemplate, UserMapper userMapper, UserDtoResultMapper userDtoMapper, UserRepository userRepository) {
         this.kafkaTemplate = kafkaTemplate;
         this.userMapper = userMapper;
         this.userDtoMapper = userDtoMapper;
@@ -57,18 +58,25 @@ public class UserService {
             User user = userOptional.get();
 
             //Async mode!!!
-            CompletableFuture<SendResult<Integer, UserEvent>> futureResult = kafkaTemplate.send(topic, user.getId(),
-                    UserEvent.instanceOfUserEventOnDelete(user.getEmail()));
+            CompletableFuture<SendResult<Integer, Message>> futureResult = kafkaTemplate.send(topic, user.getId(),
+                    Message.instanceOfMessageOnDelete(user.getEmail()));
 
             futureResult.whenComplete((sendResult, exception) -> {
-                if (exception == null) log.info("Message was sent successfully. " + sendResult.getRecordMetadata());
-                else log.error("Message didn't send. Exception: {}, message: {}.", exception.getClass(),
+                if (exception == null) LOG.info("Message was sent successfully. " + sendResult.getRecordMetadata());
+                else LOG.error("Message didn't send. Exception: {}, message: {}.", exception.getClass(),
                         exception.getMessage());
             });
             return userOptional.map(userDtoMapper::mapFrom).stream().findAny();
         }
-        log.warn("User with specified id = {} not found", id);
+        LOG.warn("User with specified id = {} not found", id);
         return Optional.empty();
+    }
+
+    public Optional<UserDtoResult> deleteWithManualMessageSending(Integer id) {
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) return Optional.empty();
+        userRepository.deleteById(id);
+        return userOptional.map(userDtoMapper::mapFrom).stream().findAny();
     }
 
 
@@ -78,14 +86,20 @@ public class UserService {
 
         //Sync mode!!!
         try {
-            SendResult<Integer, UserEvent> message = kafkaTemplate.send(topic, createUser.getId(),
-                    UserEvent.instanceOfUserEventOnCreate(createUser.getEmail())).get();
-            log.info("Message was sent successfully. " + message.getRecordMetadata());
+            SendResult<Integer, Message> message = kafkaTemplate.send(topic, createUser.getId(),
+                    Message.instanceOfMessageOnCreate(createUser.getEmail())).get();
+            LOG.info("Message was sent successfully. " + message.getRecordMetadata());
 
         } catch (Exception e) {
-            log.error("Message didn't send. Exception: {}, message: {}.", e.getClass(), e.getMessage());
+            LOG.error("Message didn't send. Exception: {}, message: {}.", e.getClass(), e.getMessage());
         }
 
+        return userDtoMapper.mapFrom(createUser);
+    }
+
+    public UserDtoResult createWithManualMessageSending(UserDtoCreateAndUpdate userCreateDto) {
+        User createUser = userMapper.mapFrom(userCreateDto);
+        createUser = userRepository.save(createUser);
         return userDtoMapper.mapFrom(createUser);
     }
 

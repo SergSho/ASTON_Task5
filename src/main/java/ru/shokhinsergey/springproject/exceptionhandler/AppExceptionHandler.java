@@ -50,6 +50,12 @@ public class AppExceptionHandler
         return ResponseEntity.status(HttpStatus.CONFLICT).body(RESPONSE_NOT_UNIQUE);
     }
 
+    @ExceptionHandler(Throwable.class)
+    public ResponseEntity<String> HandlerOtherException (Throwable exception) {
+        log.error(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
+    }
+
 //    @ExceptionHandler(MethodArgumentNotValidException.class)
 //    public ResponseEntity<String> HandlerNotUniqueParameter (MethodArgumentNotValidException exception) {
 //        String message = parseMessage(exception.getMessage());
