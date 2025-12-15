@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4718f612-b439-4fc0-a497-e90679477ebf" name="Changes" comment="some refactored">
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/ConsumerApplication.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/controller/MessageController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/handler/MessageHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/kafka/KafkaConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/service/MessageService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Consumer/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Consumer/.gitignore" beforeDir="false" />
@@ -31,7 +37,7 @@
         <option name="title" value="Current Branch" />
       </GitPushTagMode>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Consumer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/springproject" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -53,35 +59,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/Consumer/src/main/java/ru/shokhinsergey/consumer&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;9293d8e381f6c39c1f7694fa3fffd11a&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/Consumer/src/main/java/ru/shokhinsergey/consumer",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "9293d8e381f6c39c1f7694fa3fffd11a"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\OBUCH\Aston\INTENSIVE\Task__5\notifierkafkaApp\notifierkafka\Consumer\src\main\java\ru\shokhinsergey\consumer" />
@@ -179,7 +185,7 @@
       <workItem from="1765703454493" duration="11323000" />
       <workItem from="1765717441311" duration="1558000" />
       <workItem from="1765811299519" duration="5339000" />
-      <workItem from="1765816672866" duration="7700000" />
+      <workItem from="1765816672866" duration="9982000" />
     </task>
     <task id="LOCAL-00001" summary="some refactored">
       <created>1765823334358</created>
