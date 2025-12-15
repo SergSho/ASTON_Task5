@@ -8,12 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SpringProject" />
         <module name="Message" />
-        <module name="KafkaConsumer" />
+        <module name="Consumer" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="KafkaConsumer" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Consumer" options="-parameters" />
       <module name="KafkaConsumer" options="-parameters" />
       <module name="SpringProject" options="-parameters" />
     </option>
