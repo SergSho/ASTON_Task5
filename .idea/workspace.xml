@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4718f612-b439-4fc0-a497-e90679477ebf" name="Changes" comment="some refactored">
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/ConsumerApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/controller/MessageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/handler/MessageHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/kafka/KafkaConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Consumer/target/classes/ru/shokhinsergey/consumer/service/MessageService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Consumer/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Consumer/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Consumer/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Consumer/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Consumer/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Consumer" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +27,7 @@
         <option name="title" value="Current Branch" />
       </GitPushTagMode>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/springproject" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Consumer" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -74,7 +64,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/Consumer/src/main/java/ru/shokhinsergey/consumer",
+    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
@@ -185,7 +175,7 @@
       <workItem from="1765703454493" duration="11323000" />
       <workItem from="1765717441311" duration="1558000" />
       <workItem from="1765811299519" duration="5339000" />
-      <workItem from="1765816672866" duration="9982000" />
+      <workItem from="1765816672866" duration="10757000" />
     </task>
     <task id="LOCAL-00001" summary="some refactored">
       <created>1765823334358</created>
@@ -201,7 +191,14 @@
       <option name="project" value="LOCAL" />
       <updated>1765823514465</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="some refactored">
+      <created>1765826780269</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765826780269</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +231,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/ASTON_Task4" />
       <path value="$PROJECT_DIR$/ASTON_Task5_Consumer" />
+      <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="some refactored" />
     <option name="LAST_COMMIT_MESSAGE" value="some refactored" />
