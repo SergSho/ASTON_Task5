@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4718f612-b439-4fc0-a497-e90679477ebf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/KafkaConsumer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/springproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springproject/src/test/java/ru/shokhinsergey/springproject/service/UserServiceWithKafkaIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/springproject/src/test/resources/application-test.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASTON_Task4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASTON_Task5_Consumer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/kafkamessage-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Message/target/kafkamessage-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject" beforeDir="false" afterPath="$PROJECT_DIR$/springproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/springproject/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject/src/main/java/ru/shokhinsergey/springproject/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springproject/src/main/java/ru/shokhinsergey/springproject/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +28,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/KafkaConsumer" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/springproject" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -39,38 +41,57 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="36kcOIrAP8ww5SnRBAonPEqbsjo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/springproject/pom.xml&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;9293d8e381f6c39c1f7694fa3fffd11a&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/springproject/pom.xml",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "spring.configuration.checksum": "9293d8e381f6c39c1f7694fa3fffd11a"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Spring Boot.SpringprojectApplication">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.KafkaConsumerApplication">
+    <configuration name="UserServiceWithKafkaIntegrationTest.sendMessageToKafka_Ok_MethodCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SpringProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.shokhinsergey.springproject.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.shokhinsergey.springproject.service" />
+      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.springproject.service.UserServiceWithKafkaIntegrationTest" />
+      <option name="METHOD_NAME" value="sendMessageToKafka_Ok_MethodCreate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KafkaConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="KafkaConsumer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ru.shokhinsergey.kafkaconsumer.KafkaConsumerApplication" />
@@ -85,6 +106,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.UserServiceWithKafkaIntegrationTest.sendMessageToKafka_Ok_MethodCreate" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,7 +124,9 @@
       <workItem from="1765628899340" duration="12339000" />
       <workItem from="1765695602376" duration="5127000" />
       <workItem from="1765703454493" duration="11323000" />
-      <workItem from="1765717441311" duration="1242000" />
+      <workItem from="1765717441311" duration="1558000" />
+      <workItem from="1765811299519" duration="5339000" />
+      <workItem from="1765816672866" duration="365000" />
     </task>
     <servers />
   </component>
@@ -127,5 +155,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/ASTON_Task4" />
+      <path value="$PROJECT_DIR$/ASTON_Task5_Consumer" />
+    </ignored-roots>
   </component>
 </project>
