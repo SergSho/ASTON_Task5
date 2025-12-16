@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
@@ -25,17 +24,17 @@ import ru.shokhinsergey.springproject.model.User;
 import ru.shokhinsergey.springproject.repository.UserRepository;
 
 import java.util.Map;
+import java.util.Optional;
 
 
 //Пересоздание тестового контекста в случае изменения его состояния в тестовом методе (изоляция тестов)
 @DirtiesContext
-//Повторное использование объекта тестового класса для всех входящих тестовых методов
+//Повторное использование объекта тестового класса для всех входящих тестовых методов (BeforeAll - можно не static)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-// Перезаписать properties из основного конфига
+// Перезаписать properties из основного конфига тестовыми
 @ActiveProfiles("test")
-@EmbeddedKafka(partitions = 1, controlledShutdown = true)
+@EmbeddedKafka(topics = "user-event", partitions = 1, controlledShutdown = true)
 @SpringBootTest(properties = "spring.kafka.producer.bootstrap-servers=${spring.embedded.kafka.brokers}")
-
 public class UserServiceWithKafkaIntegrationTest {
     private final static String CREATE = "create";
     private final static String DELETE = "delete";
@@ -46,15 +45,6 @@ public class UserServiceWithKafkaIntegrationTest {
 
     @MockitoBean
     private UserRepository repository;
-
-//    @Autowired
-//    private UserMapper userMapper;
-
-//    @Autowired
-//    private UserDtoResultMapper userDtoMapper;
-
-//    @Autowired
-//    private KafkaTemplate<Integer, Message> kafka;
 
     @Autowired
     private Environment env;
@@ -80,16 +70,16 @@ public class UserServiceWithKafkaIntegrationTest {
         userAfterDB = new User(ID, NAME, EMAIL, AGE);
         topicName = env.getProperty("test.topic-name");
 
-//        service = new  UserService(kafka, userMapper, userDtoMapper, repository);
-
         JsonDeserializer<Message> deserializer = new JsonDeserializer <>(Message.class);
-//        deserializer.addTrustedPackages(env.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
+        deserializer.addTrustedPackages(env.getProperty("spring.kafka.consumer.properties.spring.json.trusted.packages"));
         ConsumerFactory<Integer, Message> consumerFactory = new DefaultKafkaConsumerFactory<>(
                 getConsumerProperties(),
                 new IntegerDeserializer(),
                 deserializer
         );
         consumer = consumerFactory.createConsumer();
+        // Подписать потребителя на топик
+        embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, topicName);
     }
 
     private Map<String,Object> getConsumerProperties(){
@@ -105,14 +95,10 @@ public class UserServiceWithKafkaIntegrationTest {
     }
 
     @Test
-    @DisplayName("Отправка сообщения в Kafka при создании нового \"User\".")
-    void sendMessageToKafka_Ok_MethodCreate () {
+    @DisplayName("Отправка сообщения в \"Kafka\" при создании нового \"User\".")
+    void sendMessageToKafka_Ok_MethodCreate ()  {
 
         Mockito.doReturn(userAfterDB).when(repository).save(userBeforeDB);
-        //Дополнить заглушкой repository
-        // проверить вызов repository и настроить его ответ!!
-
-        embeddedKafkaBroker.consumeFromAnEmbeddedTopic(consumer, topicName);
 
         service.create (userDtoCreateAndUpdate);
 
@@ -124,6 +110,25 @@ public class UserServiceWithKafkaIntegrationTest {
         Assertions.assertEquals(ID, key);
         Assertions.assertEquals(CREATE, message.getOperation());
         Assertions.assertEquals(EMAIL, message.getEmail());
+    }
 
+
+
+    @Test
+    @DisplayName("Отправка сообщения в \"Kafka\" при удалении \"User\".")
+    void sendMessageToKafka_Ok_MethodDelete () throws InterruptedException {
+
+        Mockito.doReturn(Optional.of(userAfterDB)).when(repository).findById(ID);
+
+        service.delete(ID);
+        ConsumerRecord<Integer, Message> result = KafkaTestUtils.getSingleRecord(consumer, topicName);
+
+        Message message = result.value();
+        Integer key = result.key();
+
+        Mockito.verify(repository, Mockito.times(1)).deleteById(ID);
+        Assertions.assertEquals(ID, key);
+        Assertions.assertEquals(DELETE, message.getOperation());
+        Assertions.assertEquals(EMAIL, message.getEmail());
     }
 }

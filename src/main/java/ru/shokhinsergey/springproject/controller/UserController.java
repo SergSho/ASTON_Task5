@@ -26,13 +26,13 @@ public class UserController {
     private final String URL = "http://localhost:8181/message";
 
     private final UserService userService;
+    private final RestTemplate restTemplate;
 
     @Autowired
-    private RestTemplate restTemplate;
+    public UserController(UserService userService, RestTemplate restTemplate) {
 
-    @Autowired
-    public UserController(UserService userService) {
         this.userService = userService;
+        this.restTemplate = restTemplate;
     }
 
     @GetMapping("/{id}")

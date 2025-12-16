@@ -1,6 +1,7 @@
 package ru.shokhinsergey.springproject.controller;
 
 import jakarta.annotation.PostConstruct;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.web.client.RestTemplate;
 import ru.shokhinsergey.springproject.dto.UserDtoCreateAndUpdate;
 import ru.shokhinsergey.springproject.dto.UserDtoResult;
 import ru.shokhinsergey.springproject.service.UserService;
@@ -29,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 
+//@Disabled
 @WebMvcTest(UserController.class)
 public class UserControllerTest {
     private final Integer ID = 1;
@@ -51,6 +54,8 @@ public class UserControllerTest {
 
     @MockitoBean
     private UserService mockService;
+    @MockitoBean
+    private RestTemplate restTemplate;
 
     @Autowired
     private MockMvc mockMvc;
