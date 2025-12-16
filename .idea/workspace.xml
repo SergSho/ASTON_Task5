@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4718f612-b439-4fc0-a497-e90679477ebf" name="Changes" comment="some refactored">
+      <change afterPath="$PROJECT_DIR$/Consumer/src/test/java/ru/shokhinsergey/consumer/handler/HandlerWithKafkaIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Consumer/src/test/resources/application-test.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Consumer" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Consumer/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Consumer/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Consumer/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/src/main/java/ru/shokhinsergey/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/Message/src/main/java/ru/shokhinsergey/message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/classes/ru/shokhinsergey/message/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/kafkamessage-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Message/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject" beforeDir="false" afterPath="$PROJECT_DIR$/springproject" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject/src/main/java/ru/shokhinsergey/springproject/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/springproject/src/main/java/ru/shokhinsergey/springproject/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject/src/test/java/ru/shokhinsergey/springproject/controller/UserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springproject/src/test/java/ru/shokhinsergey/springproject/controller/UserControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/springproject/src/test/java/ru/shokhinsergey/springproject/service/UserServiceWithKafkaIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/springproject/src/test/java/ru/shokhinsergey/springproject/service/UserServiceWithKafkaIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +56,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="36kcOIrAP8ww5SnRBAonPEqbsjo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -64,13 +79,13 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka",
+    "last_opened_file_path": "D:/OBUCH/Aston/INTENSIVE/Task__5/notifierkafkaApp/notifierkafka/Consumer/src/test/resources",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "spring.configuration.checksum": "9293d8e381f6c39c1f7694fa3fffd11a"
+    "spring.configuration.checksum": "0c4368b2a2a3b79c261166aa54449b79"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -80,6 +95,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\OBUCH\Aston\INTENSIVE\Task__5\notifierkafkaApp\notifierkafka\Consumer\src\test\resources" />
       <recent name="D:\OBUCH\Aston\INTENSIVE\Task__5\notifierkafkaApp\notifierkafka\Consumer\src\main\java\ru\shokhinsergey\consumer" />
       <recent name="D:\OBUCH\Aston\INTENSIVE\Task__5\notifierkafkaApp\notifierkafka\KafkaConsumer\src\main\resources" />
       <recent name="D:\OBUCH\Aston\INTENSIVE\Task__5\notifierkafkaApp\notifierkafka\KafkaConsumer\src\main\java\ru\shokhinsergey\kafkaconsumer" />
@@ -96,21 +112,71 @@
       <recent name="ru.shokhinsergey" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ConsumerApplication">
-    <configuration name="ru.shokhinsergey.ConsumerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.ConsumerApplication" />
+  <component name="RunManager" selected="JUnit.HandlerWithKafkaIntegrationTest.receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage">
+    <configuration name="HandlerWithKafkaIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Consumer" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.shokhinsergey.*" />
+          <option name="PATTERN" value="ru.shokhinsergey.consumer.handler.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ru.shokhinsergey.consumer.handler" />
+      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.consumer.handler.HandlerWithKafkaIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceWithKafkaIntegrationTest.sendMessageToKafka_Ok_MethodCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HandlerWithKafkaIntegrationTest.receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.shokhinsergey.consumer.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.shokhinsergey.consumer.handler" />
+      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.consumer.handler.HandlerWithKafkaIntegrationTest" />
+      <option name="METHOD_NAME" value="receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HandlerWithKafkaIntegrationTest.receiveMessageFromKafka_Ok_MethodCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.shokhinsergey.consumer.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.shokhinsergey.consumer.handler" />
+      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.consumer.handler.HandlerWithKafkaIntegrationTest" />
+      <option name="METHOD_NAME" value="receiveMessageFromKafka_Ok_MethodCreate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HandlerWithKafkaIntegrationTest.receiveMessageToKafka_Ok_MethodCreate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.shokhinsergey.consumer.handler.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ru.shokhinsergey.consumer.handler" />
+      <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.consumer.handler.HandlerWithKafkaIntegrationTest" />
+      <option name="METHOD_NAME" value="receiveMessageToKafka_Ok_MethodCreate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceWithKafkaIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SpringProject" />
       <extension name="coverage">
         <pattern>
@@ -120,8 +186,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ru.shokhinsergey.springproject.service" />
       <option name="MAIN_CLASS_NAME" value="ru.shokhinsergey.springproject.service.UserServiceWithKafkaIntegrationTest" />
-      <option name="METHOD_NAME" value="sendMessageToKafka_Ok_MethodCreate" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -156,8 +221,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ru.shokhinsergey.ConsumerApplication" />
-        <item itemvalue="JUnit.UserServiceWithKafkaIntegrationTest.sendMessageToKafka_Ok_MethodCreate" />
+        <item itemvalue="JUnit.HandlerWithKafkaIntegrationTest.receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage" />
+        <item itemvalue="JUnit.HandlerWithKafkaIntegrationTest" />
+        <item itemvalue="JUnit.HandlerWithKafkaIntegrationTest.receiveMessageFromKafka_Ok_MethodCreate" />
+        <item itemvalue="JUnit.HandlerWithKafkaIntegrationTest.receiveMessageToKafka_Ok_MethodCreate" />
+        <item itemvalue="JUnit.UserServiceWithKafkaIntegrationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +243,8 @@
       <workItem from="1765703454493" duration="11323000" />
       <workItem from="1765717441311" duration="1558000" />
       <workItem from="1765811299519" duration="5339000" />
-      <workItem from="1765816672866" duration="10757000" />
+      <workItem from="1765816672866" duration="12061000" />
+      <workItem from="1765898996976" duration="10508000" />
     </task>
     <task id="LOCAL-00001" summary="some refactored">
       <created>1765823334358</created>
@@ -235,5 +304,16 @@
     </ignored-roots>
     <MESSAGE value="some refactored" />
     <option name="LAST_COMMIT_MESSAGE" value="some refactored" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Consumer/src/test/java/ru/shokhinsergey/consumer/handler/HandlerWithKafkaIntegrationTest.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

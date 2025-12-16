@@ -1,5 +1,7 @@
 package ru.shokhinsergey.message;
 
+import java.util.Objects;
+
 public class Message {
 
     private static final String CREATE ="create";
@@ -39,5 +41,18 @@ public class Message {
         this.email = email;
     }
     public Message() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Message message = (Message) o;
+        return operation.equals(message.operation) && email.equals(message.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(operation, email);
     }
 }
