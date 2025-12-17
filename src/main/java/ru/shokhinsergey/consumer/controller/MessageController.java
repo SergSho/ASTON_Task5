@@ -16,7 +16,7 @@ import ru.shokhinsergey.message.Message;
 public class MessageController {
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    private MessageService service;
+    private final MessageService service;
 
     @Autowired
     public MessageController(MessageService service) {
@@ -25,15 +25,12 @@ public class MessageController {
 
     @RequestMapping("/message")
     public ResponseEntity<Void> sendMail (@RequestBody Message message) {
-        String operation = message.getOperation();
-        String email = message.getEmail();
-        LOG.info("KafkaConsumer received Message. Операция: {}, email: {}", operation, email);
-
-        if (operation.equalsIgnoreCase("create")) service.sendEmailWhenUserCreate(
-                Message.instanceOfMessageOnCreate(email));
-        else if (operation.equalsIgnoreCase("delete")) service.sendEmailWhenUserDelete(
-                Message.instanceOfMessageOnDelete(email));
-        else return ResponseEntity.status(500).build();
+        LOG.info("KafkaConsumer received Message. Операция: {}, email: {}", message.getOperation(), message.getEmail());
+        try {
+            service.sendEmail(message);
+        } catch (Exception e){
+            return ResponseEntity.status(500).build();
+        }
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -20,7 +20,6 @@ public class MessageHandler {
 
     @KafkaHandler
     public void sendMessage (@RequestBody Message message) {
-        if (message.getOperation().equalsIgnoreCase("create")) service.sendEmailWhenUserCreate(message);
-        else if (message.getOperation().equalsIgnoreCase("delete")) service.sendEmailWhenUserDelete(message);
+        service.sendEmail(message);
     }
 }

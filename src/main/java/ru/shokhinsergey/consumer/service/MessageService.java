@@ -25,7 +25,7 @@ public class MessageService {
     @Value("${consumer.mail.from}")
     private String from;
 
-    private JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
     @Autowired
     public MessageService(JavaMailSender mailSender) {
@@ -42,13 +42,10 @@ public class MessageService {
         return mail;
     }
 
-    public void sendEmailWhenUserCreate(Message message){
-        mailSender.send(prepareMail(greeting, message.getEmail()));
-        LOG.info("Email отправлен. Операция: {}, email: {}", message.getOperation(), message.getEmail());
-    }
-
-    public void sendEmailWhenUserDelete(Message message){
-        mailSender.send(prepareMail(farewell, message.getEmail()));
+    public void sendEmail(Message message){
+        if (message.getOperation().equalsIgnoreCase("create"))
+            mailSender.send(prepareMail(greeting, message.getEmail()));
+        else mailSender.send(prepareMail(farewell, message.getEmail()));
         LOG.info("Email отправлен. Операция: {}, email: {}", message.getOperation(), message.getEmail());
     }
 }

@@ -1,10 +1,12 @@
-package ru.shokhinsergey.consumer.handler;
+package ru.shokhinsergey.consumer.Integrationtests;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,10 +18,12 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
+import ru.shokhinsergey.consumer.handler.MessageHandler;
 import ru.shokhinsergey.consumer.service.MessageService;
 import ru.shokhinsergey.message.Message;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
 //Пересоздание тестового контекста в случае изменения его состояния в тестовом методе (изоляция тестов)
 @DirtiesContext
@@ -55,28 +59,21 @@ public class HandlerWithKafkaIntegrationTest {
         producer = new KafkaProducer<>(props,new IntegerSerializer(), new JsonSerializer<>());
     }
 
-    @Test
-    @DisplayName("Получение сообщения из \"Kafka\" при создании нового \"User\".")
-    void receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage () throws InterruptedException {
+    @ParameterizedTest
+    @MethodSource ("listOfMessages")
+    @DisplayName("Получение сообщения из \"Kafka\".")
+    void receiveMessageFromKafkaOnCreate_Ok_MethodSendMessage (Message message) throws InterruptedException {
 
-        producer.send(new ProducerRecord<>(TOPIC, ID, CREATE_MESSAGE));
+        producer.send(new ProducerRecord<>(TOPIC, ID, message));
 
         Thread.sleep(2000);
 
-        Mockito.verify(handler, Mockito.times(1)).sendMessage(CREATE_MESSAGE);
-        Mockito.verify(service, Mockito.times(1)).sendEmailWhenUserCreate(CREATE_MESSAGE);
+        Mockito.verify(handler, Mockito.times(1)).sendMessage(message);
+        Mockito.verify(service, Mockito.times(1)).sendEmail(message);
     }
 
-    @Test
-    @DisplayName("Получение сообщения из \"Kafka\" при удалении \"User\".")
-    void receiveMessageFromKafkaOnDelete_Ok_MethodSendMessage () throws InterruptedException {
-
-        producer.send(new ProducerRecord<>(TOPIC, ID, DELETE_MESSAGE));
-
-        Thread.sleep(2000);
-
-        Mockito.verify(handler, Mockito.times(1)).sendMessage(DELETE_MESSAGE);
-        Mockito.verify(service, Mockito.times(1)).sendEmailWhenUserDelete(DELETE_MESSAGE);
+    private Stream<Message> listOfMessages() {
+        return Stream.of(CREATE_MESSAGE, DELETE_MESSAGE);
     }
 }
 
