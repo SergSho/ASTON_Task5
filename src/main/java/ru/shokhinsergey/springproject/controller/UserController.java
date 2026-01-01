@@ -26,6 +26,8 @@ public class UserController {
     private final String URL = "http://localhost:8181/message";
 
     private final UserService userService;
+
+    // TO DO: Move RestTemplate to UserService!!!
     private final RestTemplate restTemplate;
 
     @Autowired
